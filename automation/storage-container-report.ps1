@@ -1,5 +1,5 @@
 # Define the storage account details
-$sub = "Sime Darby Plantation (Azure)"
+$sub = "<Azure subscription Name>"
 $containerReport = "Container_Report_"+$date+".csv"
 $storageAccounts = Get-AzStorageAccount
 
