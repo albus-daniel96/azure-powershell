@@ -1,0 +1,11 @@
+$VM_Free_C_Disk = Get-WmiObject -Class win32_logicaldisk | Where-Object DeviceID -EQ C:
+$VM_Avg_CPU = Get-WmiObject win32_processor | Measure-Object -property LoadPercentage -Average | Select Average
+
+$VM_Information = @{
+  "VM Name" = hostname
+  "C Disk Size" = [math]::Round($VM_Free_C_Disk.Size/1GB)
+  "C Disk Remaning Space" = [math]::Round($VM_Free_C_Disk.FreeSpace/1GB)
+  "Avg CPU Usage" = $VM_Avg_CPU.Average
+}
+
+return $VM_Information
